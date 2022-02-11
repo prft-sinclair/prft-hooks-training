@@ -8,6 +8,7 @@ import './styles/App.css'
 import './skeleton.css'
 
 import MyInput from './MyInput';
+import MyInput2 from './MyInput2';
 
 export function mapStateToProps(state, ownProps){
   return {
@@ -33,6 +34,8 @@ function App({view}){
         <Nav/>
         <CurrentView />
         <MyInput label="First Name" name="fname" value="" />
+        <hr />
+        <MyInput2 label="First Name" name="fname" value="" />
       </div>
     )
 }

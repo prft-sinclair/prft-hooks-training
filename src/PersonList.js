@@ -1,30 +1,24 @@
 import React from 'react'
-import {connect} from 'react-redux'
 import { setView, setSelected } from './person'
+import { useDispatch, useSelector } from 'react-redux';
 
-export function mapStateToProps(state){
-  return {
-    people: state.App.people
-  };
-}
-
-export const mapDispatchToProps = {
-  setView, setSelected
-}
-
-export function PersonList(props) {
+export default function PersonList(props) {
+  const dispatch = useDispatch()
+  const  {people} =  useSelector((state)=>{
+    return {
+      people: state.App.people
+    };
+  })
   return (
     <div>
       <ul className="PersonList">
-        {props.people.map((person) =>
+        {people.map((person) =>
           <li key={person.id}
-              onClick={() => props.setSelected(person.id)}>{person.firstName} {person.lastName}</li>)}
+              onClick={() => dispatch(setSelected(person.id))}>{person.firstName} {person.lastName}</li>)}
       </ul>
-      <button className="button-primary" onClick={() => props.setView('PersonAdd')}>
+      <button className="button-primary" onClick={() => dispatch(setView('PersonAdd'))}>
         Add a Person
       </button>
     </div>
   )
 }
-
-export default connect(mapStateToProps, mapDispatchToProps)(PersonList);

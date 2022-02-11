@@ -13,7 +13,7 @@ export default class MyInput extends Component {
   }
 
   componentDidMount(){
-    alert("MyInput mounted")
+    console.log("MyInput mounted")
   }
 
   handleUpdate = (event)=>{
